@@ -14,6 +14,17 @@ cabal-version:       >=1.10
 extra-source-files:  README.md
                      CHANGELOG.md
 
+library
+  hs-source-dirs:     src
+  exposed-modules:    IOUtils
+  build-depends:      base >= 4.7 && < 5
+                    , directory 
+                    , text 
+                    , regex-tdfa
+                    , regex-compat
+                    , containers
+  default-language:   Haskell2010
+
 executable hs-information-retrieval
   hs-source-dirs:      src
   main-is:             Main.hs
@@ -24,6 +35,7 @@ executable hs-information-retrieval
                      , regex-tdfa
                      , regex-compat
                      , containers
+                     , hs-information-retrieval
   ghc-options:         -Wall
                        -Wcompat
                        -Widentities
@@ -33,3 +45,4 @@ executable hs-information-retrieval
                        -Wmissing-home-modules
                        -Wpartial-fields
                        -Wredundant-constraints
+
