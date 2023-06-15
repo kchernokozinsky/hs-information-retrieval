@@ -52,5 +52,7 @@ readFileWithEncoding filePath = do
 processFile :: String -> String
 processFile str = 
     let noTags = subRegex (mkRegex "<[^>]*>") str ""
-        noSpecialChars = subRegex (mkRegex "[^a-zA-Z0-9 ,.;:'`\"!?]") noTags "" :: String
-    in trim noSpecialChars
+        apostrophe = subRegex (mkRegex "&#39;") noTags "'"
+        noSpecialChars = subRegex (mkRegex "[^a-zA-Z0-9 ,.;:'`\"!?]") apostrophe "" :: String
+        cs = subRegex (mkRegex " +") noSpecialChars " " 
+    in trim cs
