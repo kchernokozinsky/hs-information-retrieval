@@ -16,13 +16,20 @@ extra-source-files:  README.md
 
 library
   hs-source-dirs:     src
-  exposed-modules:    IOUtils
+  exposed-modules:    IOUtils,
+                      TermDocument,
+                      IncidenceMatrix,
+                      InvertedIndex,
+                      QueryParser
   build-depends:      base >= 4.7 && < 5
                     , directory 
                     , text 
                     , regex-tdfa
                     , regex-compat
                     , containers
+                    , unordered-containers
+                    , megaparsec
+                    , parser-combinators
   default-language:   Haskell2010
 
 executable hs-information-retrieval
@@ -35,7 +42,10 @@ executable hs-information-retrieval
                      , regex-tdfa
                      , regex-compat
                      , containers
+                     , unordered-containers
                      , hs-information-retrieval
+                     , megaparsec
+                     , parser-combinators
   ghc-options:         -Wall
                        -Wcompat
                        -Widentities

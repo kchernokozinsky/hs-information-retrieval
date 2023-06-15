@@ -5,6 +5,8 @@ import System.IO
 import Text.Regex
 import qualified Data.Text as T
 import qualified Data.Set as Set
+import IncidenceMatrix
+import InvertedIndex
 
 writeStringToFile :: FilePath -> String -> IO ()
 writeStringToFile filePath contents = do
@@ -12,6 +14,18 @@ writeStringToFile filePath contents = do
   hSetEncoding h utf8
   hPutStr h contents
   hClose h
+
+-- Write IncidenceMatrix to file
+writeIncidenceMatrixToFile :: FilePath -> IncidenceMatrix -> IO ()
+writeIncidenceMatrixToFile path matrix = do
+    let lines = incidenceMatrixToStrings matrix
+    writeFile path $ unlines lines
+
+-- Write InvertedIndex to file
+writeInvertedIndexToFile :: FilePath -> InvertedIndex -> IO ()
+writeInvertedIndexToFile filePath index = do
+    let indexStrs = invertedIndexToStrings index
+    writeFile filePath (unlines indexStrs)
 
 writeSetToFile :: FilePath -> Set.Set String -> IO ()
 writeSetToFile filePath set = do
