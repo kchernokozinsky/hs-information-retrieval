@@ -3,6 +3,7 @@ import qualified Data.Set as Set
 import Text.Regex.TDFA ((=~), getAllTextMatches, AllTextMatches)
 import qualified Data.HashMap.Strict as Map
 
+
 type Term = String
 
 type DoubleTerm = String
@@ -29,3 +30,4 @@ documentTerms'' :: String -> [DoubleTerm]
 documentTerms'' content = getDoubleTerms $ getWords content
     where getDoubleTerms :: [Term] -> [DoubleTerm]
           getDoubleTerms terms = zipWith (\t1 t2 -> t1 ++ " " ++ t2) terms (tail terms)
+

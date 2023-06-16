@@ -41,6 +41,13 @@ writeSetToFile filePath set = do
   hPutStr h (show set)
   hClose h
 
+writeListToFile :: FilePath -> [String] -> IO ()
+writeListToFile filePath list = do
+  h <- openFile filePath WriteMode
+  hSetEncoding h utf8
+  hPutStr h (show list)
+  hClose h
+
 trim :: String -> String
 trim = T.unpack . T.strip . T.pack
 

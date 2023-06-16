@@ -14,7 +14,7 @@ buildDoubleInvertedIndex :: [(Document, String)] -> DoubleInvertedIndex
 buildDoubleInvertedIndex documents = foldl (\acc (document, content) -> insertTerms document content acc ) Map.empty documents
   where
     insertTerms document content index  = 
-        foldl (\acc term -> Map.insertWith (++) term [document] acc ) index (documentTerms'' content)
+        foldl (\acc term -> Map.insertWith (\new old -> nub (new ++ old)) term [document] acc ) index (documentTerms'' content)
       
 
 hasTermDocument :: DoubleTerm -> Document -> DoubleInvertedIndex -> Bool

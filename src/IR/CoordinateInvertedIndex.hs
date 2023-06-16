@@ -1,3 +1,4 @@
+{-# LANGUAGE DeriveGeneric #-}
 module IR.CoordinateInvertedIndex where 
 
 import qualified Data.HashMap.Strict as Map
