@@ -33,14 +33,12 @@ executeQuery index (Not q) =
         queryDocs = Set.fromList $ executeQuery index q
     in  filter (`Set.notMember` queryDocs) allDocs
 
--- Given a string query, execute it against an inverted index.
 search :: InvertedIndex -> String -> [Document]
 search index query = 
   case parseExpr query of
     Left _ -> []
     Right expr -> executeQuery index expr
     
--- Convert InvertedIndex to list of strings
 invertedIndexToStrings :: InvertedIndex -> [String]
 invertedIndexToStrings index = do
     (term, docs) <- Map.toList index

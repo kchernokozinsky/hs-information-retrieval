@@ -1,4 +1,4 @@
-module Parser.CoordQueryParser where 
+module Parser.CoordQueryParser (parseTermDistancePairs, TermDistancePair(TermDistancePair)) where 
 
 import IR.TermDocument
 import Text.Megaparsec

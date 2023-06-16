@@ -1,4 +1,4 @@
-module Parser.BoolQueryParser where
+module Parser.BoolQueryParser (parseExpr, Expr(Term, Not, And, Or)) where
 
 import Text.Megaparsec
 import Text.Megaparsec.Char
