@@ -22,7 +22,5 @@ cabal.project.local~
 .HTF/
 .ghc.environment.*
 .DS_Store
-.DS_Store
 *.fb2
 *.txt
-.DS_Store

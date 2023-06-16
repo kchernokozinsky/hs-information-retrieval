@@ -1,12 +1,13 @@
-module IOUtils where 
+module Utils.IO where 
 
 import System.Directory
 import System.IO
 import Text.Regex
 import qualified Data.Text as T
 import qualified Data.Set as Set
-import IncidenceMatrix
-import InvertedIndex
+import IR.IncidenceMatrix
+import IR.InvertedIndex
+import IR.CoordinateInvertedIndex
 
 writeStringToFile :: FilePath -> String -> IO ()
 writeStringToFile filePath contents = do
@@ -25,6 +26,12 @@ writeIncidenceMatrixToFile path matrix = do
 writeInvertedIndexToFile :: FilePath -> InvertedIndex -> IO ()
 writeInvertedIndexToFile filePath index = do
     let indexStrs = invertedIndexToStrings index
+    writeFile filePath (unlines indexStrs)
+  
+-- Write CoordinateInvertedIndex to file
+writeCoordinateInvertedIndexToFile :: FilePath -> CoordinateInvertedIndex -> IO ()
+writeCoordinateInvertedIndexToFile filePath index = do
+    let indexStrs = coordinateInvertedIndexToStrings index
     writeFile filePath (unlines indexStrs)
 
 writeSetToFile :: FilePath -> Set.Set String -> IO ()

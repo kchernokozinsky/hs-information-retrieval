@@ -16,11 +16,13 @@ extra-source-files:  README.md
 
 library
   hs-source-dirs:     src
-  exposed-modules:    IOUtils,
-                      TermDocument,
-                      IncidenceMatrix,
-                      InvertedIndex,
-                      QueryParser
+  exposed-modules:    Utils.IO,
+                      IR.TermDocument,
+                      IR.IncidenceMatrix,
+                      IR.InvertedIndex,
+                      Parser.BoolQueryParser,
+                      Parser.CoordQueryParser,
+                      IR.CoordinateInvertedIndex
   build-depends:      base >= 4.7 && < 5
                     , directory 
                     , text 

@@ -1,4 +1,4 @@
-module QueryParser where
+module Parser.BoolQueryParser where
 
 import Text.Megaparsec
 import Text.Megaparsec.Char

@@ -1,11 +1,11 @@
-module IncidenceMatrix where 
+module IR.IncidenceMatrix where 
 
 import qualified Data.HashMap.Strict as Map
 import Data.List (intercalate, nub)
-import TermDocument
+import IR.TermDocument
 import Data.List as List
 import qualified Data.Set as Set
-import QueryParser
+import Parser.BoolQueryParser
 
 
 type IncidenceMatrix = Map.HashMap Term (Map.HashMap Document Bool)

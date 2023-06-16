@@ -1,10 +1,10 @@
-module InvertedIndex where 
+module IR.InvertedIndex where 
 
 import qualified Data.HashMap.Strict as Map
 import Data.List (intercalate, nub)
 import qualified Data.Set as Set
-import TermDocument
-import QueryParser
+import IR.TermDocument
+import Parser.BoolQueryParser
 import Data.List as List
 
 type InvertedIndex = Map.HashMap Term [Document]
@@ -39,6 +39,7 @@ search index query =
   case parseExpr query of
     Left _ -> []
     Right expr -> executeQuery index expr
+    
 -- Convert InvertedIndex to list of strings
 invertedIndexToStrings :: InvertedIndex -> [String]
 invertedIndexToStrings index = do
