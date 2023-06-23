@@ -47,3 +47,16 @@ The aim of this project is to implement advanced algorithms and techniques for i
 - Implement support for wildcard queries (queries with jokers) in the retrieval system.
 - Allow users to search for terms using wildcard characters that represent unknown characters in the query.
 - Implement efficient algorithms to handle wildcard queries and retrieve relevant results.
+
+## How to Use
+
+1. Move the FB2 format files to the `resources/fb2` folder in the project directory.
+
+2. Open the console or terminal and navigate to the project directory.
+
+3. Run the following commands:
+
+    ```bash
+    stack build
+    stack exec hs-information-retrieval
+    ```
