@@ -15,7 +15,7 @@ type Coord = Int
 type Distance = Int
 
 getWords :: String -> [Term]
-getWords str = getAllTextMatches (str =~ "[a-zA-Z0-9']+" :: AllTextMatches [] String)
+getWords str = getAllTextMatches (str =~ "[a-zA-Z0-9'$]+" :: AllTextMatches [] String)
 
 documentTerms :: String -> [Term]
 documentTerms content = Set.toList $ Set.fromList (getWords content)

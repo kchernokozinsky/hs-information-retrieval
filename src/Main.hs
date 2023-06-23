@@ -5,7 +5,9 @@ import IR.InvertedIndex as Index
 import IR.CoordinateInvertedIndex as CoordIndex
 import IR.DoubleInvertedIndex as DoubleIndex
 import IR.Set as S
-
+import Data.List as List
+import IR.Trie as Trie
+import IR.KGramIndex as KGram
 
 main :: IO ()
 main = do
@@ -20,6 +22,8 @@ main = do
     -- -- CREATE SET --
 
     let wordsSet = S.uniqueWords contents
+    print $ "unique terms size: " ++ show(List.length wordsSet)
+    print $ "collection size: " ++show(List.length $ S.words contents)
     writeListToFile "resources/out/set.txt" wordsSet
     serializeToFile "resources/out/serialized/set.bin" wordsSet
 
@@ -61,6 +65,23 @@ main = do
     print $ "Douglas coming down the stair: " ++ show(DoubleIndex.search doubleInvertedIndex "Douglas coming down the stair")
     print $ "said Holmes and his: " ++ show(DoubleIndex.search doubleInvertedIndex "said Holmes and his")
     print $ "I had come down from the north: " ++ show(DoubleIndex.search doubleInvertedIndex "I had come down from the north")
+
+    -- CREATE TRIE with PERMUTATION INDEX --  
+     
+    let trie = Trie.build wordsSet
+    print "TRIE---------------------------------" 
+    print $ "ab*min*: " ++ show(Trie.match' "ab*min*" trie)
+    print $ "blu*pett*coate*: " ++ show(Trie.match' "blu*pett*coate*" trie)
+    print $ "co*ceiva*: " ++ show(Trie.match' "co*ceiva*" trie)
+
+    -- CREATE KGRAMS INDEX --  
+    let kGramIndex = KGram.buildKGramIndex wordsSet
+    writeInvertedIndexToFile "resources/out/kgram-index.txt" kGramIndex
+    print "KGRAMS INDEX---------------------------------"
+    -- print $ "wor*: " ++ show(KGram.search kGramIndex "wor*")
+    print $ "ab*min*: " ++ show(KGram.search kGramIndex "ab*min*")
+    print $ "blu*pett*coate*: " ++ show(KGram.search kGramIndex "blu*pett*coate*")
+    print $ "co*ceiva*: " ++ show(KGram.search kGramIndex "co*ceiva*")
     print "done"
     
 

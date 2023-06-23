@@ -1,11 +1,13 @@
 # hs-information-retrieval
 
-Welcome to the Information Retrieval project repository! This project is written in Haskell and is part of the University Course "Information Retrieval." 
+Welcome to the Information Retrieval project repository! This project is written in Haskell and is part of the University Course "Information Retrieval."
 
 ## About
 
 The aim of this project is to implement advanced algorithms and techniques for information retrieval. Through this repository, we explore the fascinating world of retrieving and analyzing information using Haskell's powerful and expressive features.
-## Tasks: 
+
+## Tasks:
+
 ### Task 1: Dictionary
 
 - Write a program that builds a dictionary of terms based on a given collection of text files.
@@ -32,3 +34,16 @@ The aim of this project is to implement advanced algorithms and techniques for i
 
 - Build a two-word index and a coordinate inverted index on a collection of documents.
 - Implement phrase search and distance-based search for each of them.
+
+### Task 4: Advanced Indexing
+
+- Build a suffix tree for the dictionary of terms.
+- Build a permutation index for the dictionary.
+- Build a 3-gram index for the dictionary.
+- Implement wildcard search support for queries.
+
+### Task 5: Implement Joker Queries
+
+- Implement support for wildcard queries (queries with jokers) in the retrieval system.
+- Allow users to search for terms using wildcard characters that represent unknown characters in the query.
+- Implement efficient algorithms to handle wildcard queries and retrieve relevant results.

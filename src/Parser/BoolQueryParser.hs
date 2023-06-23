@@ -26,7 +26,7 @@ symbol :: String -> Parser String
 symbol = L.symbol sc
 
 term :: Parser Expr
-term = Term <$> lexeme (some alphaNumChar)
+term = Term <$> lexeme (some (alphaNumChar <|> char '$'))
 
 notExpr :: Parser (Expr -> Expr)
 notExpr = Not <$ symbol "NOT"

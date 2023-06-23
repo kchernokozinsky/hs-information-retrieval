@@ -11,6 +11,9 @@ getWords str = getAllTextMatches (str =~ "[a-zA-Z0-9']+" :: AllTextMatches [] St
 uniqueWords :: [String] -> [String]
 uniqueWords contents = S.toList $ foldl (\acc content -> acc `S.union` S.fromList (getWords content)) S.empty contents
 
+words :: [String] -> [String]
+words contents = foldl (\acc content -> acc ++ (getWords content)) [] contents
+
 serializeToFile :: Binary a => FilePath -> [a] -> IO ()
 serializeToFile filePath xs = B.writeFile filePath (encode xs)
 
